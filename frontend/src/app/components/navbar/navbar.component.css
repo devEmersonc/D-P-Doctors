@@ -1,0 +1,14 @@
+.navbar{
+    background-color: #d3e6f7;
+}
+.photo_perfil{
+    border-radius: 50%;
+}
+
+.icon{
+    border-radius: 3px;
+}
+
+.nav-link:hover{
+    color: black;
+}

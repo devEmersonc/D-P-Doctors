@@ -1,0 +1,9 @@
+button:hover{
+    background-color: rgb(212, 236, 236);
+    color: rgb(61, 59, 59);
+    border-color: aliceblue;
+}
+
+.title{
+    color: rgb(75, 71, 71);
+}

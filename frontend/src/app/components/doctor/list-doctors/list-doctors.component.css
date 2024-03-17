@@ -1,0 +1,13 @@
+.bak{
+    background-color: rgba(247, 244, 244, 0.432);
+    border-radius: 10px;
+}
+
+.border:hover{
+    box-shadow: 8px 8px 8px 8px #80808144;
+    transform: scale(1.03);
+}
+
+.doctors{
+    background-color: #9ed8e421;
+}

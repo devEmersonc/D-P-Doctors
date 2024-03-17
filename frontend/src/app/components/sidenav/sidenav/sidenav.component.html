@@ -1,0 +1,24 @@
+<div class="p-2" style="background-color: #d3e6f7;">
+    <ul class="nav nav-pills flex-column mt-4">
+        <li class="nav-item py-2 py-sm-0 mt-2">
+            <a [routerLink]="['/']" class="nav-link">
+                <i class="fs-5 fa fa-house" style="color: #3b4146;"></i><span class="fs-4 d-none ms-2 d-sm-inline">Inicio</span>
+            </a>
+        </li>
+        <li class="nav-item py-2 py-sm-0 mt-2"*ngIf="login.getUserRole() == 'ROLE_DOCTOR'" >
+            <a [routerLink]="['/profile']" class="nav-link text-black">
+                <i class="fa-solid fa-user" style="color: #3b4146;"></i><span class="fs-4 d-none ms-3 d-sm-inline">Perfil</span>
+            </a>
+        </li>
+        <li class="nav-item py-2 py-sm-0 mt-2"*ngIf="login.getUserRole() == 'ROLE_PATIENT'" >
+            <a [routerLink]="['/profile/patient/']" class="nav-link text-black">
+                <i class="fa-solid fa-user" style="color: #3b4146;"></i><span class="fs-4 d-none ms-2 d-sm-inline">Perfil</span>
+            </a>
+        </li>
+        <li class="nav-item py-2 py-sm-0 mt-2" *ngIf="login.getUserRole() == 'ROLE_DOCTOR'">
+            <a [routerLink]="['/messages', user.id]" class="nav-link text-black">
+                <i class="fs-5 fa fa-message" style="color: #3b4146;"></i><span class="fs-4 d-none ms-2 d-sm-inline">Mensajes</span>
+            </a>
+        </li>
+    </ul>
+</div>

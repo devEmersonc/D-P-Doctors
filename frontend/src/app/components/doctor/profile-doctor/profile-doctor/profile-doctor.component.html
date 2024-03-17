@@ -1,0 +1,72 @@
+<ul class="alert alert-danger" *ngIf="errors?.length">
+    <li *ngFor="let error of errors">{{error}}</li>
+</ul>
+<div class="container-fluid">
+    <div class="row flex-nowrap mb-5">   
+        <div class="col-auto col-md-4 col-lg-2 min-vh-100 d-flex flex-column justify-content-between" style="background-color: #d3e6f7;">
+            <app-sidenav></app-sidenav>
+        </div>
+        <div class="col-md-8 col-lg-10">
+            <div class="row mb-5">
+                <div class="col-sm">
+                    <div class="card bg-white text-dark w-50 mx-auto mt-5">
+                        <div class="card-header bg-light text-center">Perfil</div>
+                        <div class="card-body">
+                            <div class="form-group row mt-4 mx-auto justify-content-center">                                    
+                                <div class="col-sm-12 col-md-8 text-center">
+                                    <img class="photo" *ngIf="user?.photo" src="http://localhost:8080/api/doctors/uploads/img/{{user.photo}}" alt="profile_picture" width="200px" height="200px">
+                                    <img class="photo" *ngIf="!user?.photo" src="http://localhost:8080/images/user_icon.png" alt="profile_picture" width="200px" height="200px">
+                                    <div class="input-group mb-3 mt-4">
+                                        <input (change)="selectImage($event)" type="file" class="form-control" id="inputGroupFile02">
+                                    </div>   
+                                    <div class="input-group-append">
+                                        <button [disabled]="!selectImage" (click)="uploadImage()" class="btn btn-outline-secondary" type="button" id="inputGroupFile02">Subir foto</button>
+                                    </div> 
+                                </div>
+                            </div>
+                            <form>                                
+                                <div class="form-group row mt-4 mx-auto">
+                                    <label for="firstname" class="col-form-label col-sm-4 col-md-4">Nombre</label>
+                                    <div class="col-sm-12 col-md-8">
+                                        <input type="text" id="firstname" name="firstname" class="form-control" [(ngModel)]="user.firstname">
+                                    </div>
+                                </div>
+                    
+                                <div class="form-group row mt-4 mx-auto">
+                                    <label for="lastname" class="col-form-label col-sm-4 col-md-4">Apellido</label>
+                                    <div class="col-sm-12 col-md-8">
+                                        <input type="text" id="lastname" name="lastname" class="form-control" [(ngModel)]="user.lastname">
+                                    </div>
+                                </div>
+                            
+                                <div class="form-group row mt-4 mx-auto">
+                                    <label for="phone" class="col-form-label col-sm-4 col-md-4">Teléfono</label>
+                                    <div class="col-sm-12 col-md-8">
+                                        <input type="text" id="phone" name="phone" class="form-control" [(ngModel)]="user.phone">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row mt-4 mx-auto">
+                                    <label for="s" class="col-form-label col-sm-4 col-md-4">Especialización</label>
+                                    <div class="col-sm-12 col-md-8">
+                                        <select class="form-select" id="s" name="s" aria-label="Default select example" [(ngModel)]="user.specialty">
+                                            <option selected>Elige tu especialización...</option>
+                                            <option *ngFor="let s of specialties" [ngValue]="s">{{s}}</option>                            
+                                          </select>
+                                    </div>
+                                </div>
+                        
+                                <div class="form-group row mt-4 justify-content-center">
+                                    <div class="c">
+                                        <button class="btn btn-primary mx-auto d-block" (click)="updateUser()">Guardar cambios</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                      
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

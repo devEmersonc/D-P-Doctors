@@ -1,0 +1,20 @@
+.bg{
+    background-color: #a8d1d634;
+    border-radius: 10px;
+}
+
+ul{
+    list-style: none;
+}
+
+.login{
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px 2px #80808144;
+}
+
+::placeholder{
+    text-align: center;
+}
+textarea{
+    resize: none;
+}

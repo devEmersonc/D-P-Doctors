@@ -1,0 +1,65 @@
+<div class="container-fluid">
+    <div class="row flex-nowrap">   
+        <div class="bg-dark col-auto col-md-4 col-lg-2 min-vh-100 d-flex flex-column justify-content-between">
+            <app-sidenav></app-sidenav>
+        </div>
+        <div class="col-md-8 col-lg-10">
+            <div class="row">
+                <div class="col-sm">
+                    <div class="card bg-white text-dark w-50 mx-auto mt-5">
+                        <div class="card-header bg-light">Perfil</div>
+                        <div class="card-body">
+                            <div class="form-group row mt-4 mx-auto justify-content-center">                                    
+                                <div class="col-sm-12 col-md-8">
+                                    <img  *ngIf="user?.photo" src="http://localhost:8080/api/doctors/uploads/img/{{user.photo}}" alt="profile_picture" width="200px" height="200px">
+                                    <img  *ngIf="!user?.photo" src="http://localhost:8080/images/user_icon.png" alt="No foto" width="200px" height="200px">
+                                </div>
+                            </div>
+                            <form>                                
+                                <div class="form-group row mt-4 mx-auto">                                    
+                                    <div class="col-sm-12 col-md-8">
+                                        <div class="input-group mb-3">
+                                            <input (change)="selectImage($event)" type="file" class="form-control" id="inputGroupFile02">
+                                            <label class="input-group-text" for="inputGroupFile02">Seleccionar foto</label>
+                                          </div>   
+                                          <div class="input-group-append">
+                                            <button [disabled]="!selectImage" (click)="uploadImage()" class="btn btn-outline-secondary" type="button" id="inputGroupFile02">Subir foto</button>
+                                          </div> 
+                                    </div>
+                                </div>
+                
+                                <div class="form-group row mt-4 mx-auto">
+                                    <label for="nombre" class="col-form-label col-sm-4 col-md-4">Nombre</label>
+                                    <div class="col-sm-12 col-md-8">
+                                        <input type="text" id="nombre" name="nombre" class="form-control" [(ngModel)]="user.firstname">
+                                    </div>
+                                </div>
+                    
+                                <div class="form-group row mt-4 mx-auto">
+                                    <label for="apellido" class="col-form-label col-sm-4 col-md-4">Apellido</label>
+                                    <div class="col-sm-12 col-md-8">
+                                        <input type="text" id="apellido" name="apellido" class="form-control" [(ngModel)]="user.lastname">
+                                    </div>
+                                </div>
+                            
+                                <div class="form-group row mt-4 mx-auto">
+                                    <label for="email" class="col-form-label col-sm-4 col-md-4">Email</label>
+                                    <div class="col-sm-12 col-md-8">
+                                        <input type="text" id="email" name="email" class="form-control" [(ngModel)]="user.email">
+                                    </div>
+                                </div>        
+                        
+                                <div class="form-group row mt-4 justify-content-center">
+                                    <div class="c">
+                                        <button class="btn btn-primary mx-auto d-block" (click)="updateUser()">Guardar cambios</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                      
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,11 @@
+span{
+    color: #3b4146;
+}
+
+a{
+    transition: backgroung-color 0.5;
+}
+
+a:hover{
+    background-color: white;
+}
