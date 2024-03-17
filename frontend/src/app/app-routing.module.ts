@@ -28,7 +28,7 @@ const routes: Routes = [
   {path: "messages/:id", component: MessagesComponent, canActivate: [doctorGuard]},
   {path: "form-register", component: FormRegisterComponent},
   {path: "register-patient", component: RegisterPatientComponent},
-  {path: "doctors/page/:page", component: ListDoctorsComponent},
+  {path: "doctors", component: ListDoctorsComponent},
   {path: "about-us", component: AboutusComponent}
 ];
 
