@@ -9,4 +9,6 @@ public interface AuthService {
     public AuthResponse login(AuthenticationRequest request);
 
     User findByEmail(String email);
+
+    boolean authenticateUser(String email, String password);
 }

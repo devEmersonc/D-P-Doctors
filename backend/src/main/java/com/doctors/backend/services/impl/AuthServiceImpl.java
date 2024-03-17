@@ -9,6 +9,7 @@ import com.doctors.backend.services.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -45,5 +46,20 @@ public class AuthServiceImpl implements AuthService {
     @Override
     public User findByEmail(String email) {
         return userRepository.findByEmail(email);
+    }
+
+    @Override
+    public boolean authenticateUser(String email, String password) {
+        User user = userRepository.findByEmail(email);
+
+        if(user == null){
+            return false;
+        }else{
+            if(BCrypt.checkpw(password, user.getPassword())){
+                return true;
+            }else{
+                return false;
+            }
+        }
     }
 }
