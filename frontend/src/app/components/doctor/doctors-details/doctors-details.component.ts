@@ -20,11 +20,16 @@ export class DoctorsDetailsComponent implements OnInit{
   constructor(public login: AuthService, private doctorService: DoctorService, private route: ActivatedRoute, private router: Router){}
   
   ngOnInit(): void {
-    this.route.paramMap.subscribe(params => {
+    this.route.paramMap.subscribe(params => {            
       let id:number = Number(params.get('id'));
       if(id){
         this.doctorService.getDoctor(id).subscribe(doctor => {
           this.doctor = doctor;
+          window.scrollTo({
+            top:0,
+            left:0,
+            behavior: 'smooth'
+          });
           if(doctor.sex == 'Femenino'){
             doctor.specialty = doctor.specialty.substring(0, doctor.specialty.length -1);
             doctor.specialty = doctor.specialty.concat('a');

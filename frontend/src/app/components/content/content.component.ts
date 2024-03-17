@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { User } from 'src/app/models/user';
 import { AuthService } from 'src/app/services/auth-service/auth.service';
 import { DoctorService } from 'src/app/services/doctor-service/doctor.service';
@@ -16,7 +17,7 @@ export class ContentComponent implements OnInit{
   arr:User[] = [];
   doc: User = new User();
 
-  constructor(private doctorService: DoctorService, public auth: AuthService){}
+  constructor(private doctorService: DoctorService, public auth: AuthService, private router: Router){}
 
   ngOnInit(): void {
     this.doc = this.auth.getUser();
@@ -38,8 +39,6 @@ export class ContentComponent implements OnInit{
       }
     })
   }
-
-
 
   /*ngOnInit(): void {
     this.doc = this.auth.getUser();
