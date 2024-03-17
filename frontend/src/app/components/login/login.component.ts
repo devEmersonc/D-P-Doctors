@@ -29,8 +29,6 @@ export class LoginComponent implements OnInit{
   }
 
   formSubmitLogin(){
-    this.doctorService.existsByEmail(this.loginData.email).subscribe({
-      next: (json) => {
         this.login.generateToken(this.loginData).subscribe(
           (data: any) => {
             this.login.loginUser(data.token);
@@ -49,13 +47,8 @@ export class LoginComponent implements OnInit{
               }
             })
           },(error) => {
-            console.log(error);
+            this.errors = error.error.errors as string[];
           }
         )    
-      },
-      error: (err) => {
-        this.errors[0] = "Usuario o contraseña incorrecto";
-      }
-    })
   }
 }
