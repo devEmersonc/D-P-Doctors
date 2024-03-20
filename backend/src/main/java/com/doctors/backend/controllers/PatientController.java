@@ -154,7 +154,7 @@ public class PatientController {
         }
 
         if (!recurso.exists() && !recurso.isReadable()) {
-            filePath = Paths.get("src/main/resources/static/images").resolve("user-icon.png").toAbsolutePath();
+            filePath = Paths.get("src/main/resources/static/images").resolve("user_icon.png").toAbsolutePath();
 
             try {
                 recurso = new UrlResource(filePath.toUri());
@@ -169,7 +169,7 @@ public class PatientController {
         return new ResponseEntity<Resource>(recurso, header, HttpStatus.OK);
     }
 
-    @DeleteMapping("/doctors/{id}")
+    @DeleteMapping("/patient/{id}")
     public ResponseEntity<?> deletePatient(@PathVariable Long id){
         Map<String, Object> response = new HashMap<>();
 

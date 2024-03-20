@@ -29,6 +29,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { AboutusComponent } from './components/aboutus/aboutus.component';
 import { PaginatorComponent } from './components/paginator/paginator.component';
 import { FilterPipe } from './components/pipes/filter.pipe';
+import { DetailsMessageComponent } from './components/doctor/messages/details-message/details-message.component';
 
 registerLocaleData(localEs, "es-CL");
 
@@ -54,7 +55,8 @@ registerLocaleData(localEs, "es-CL");
     FooterComponent,
     AboutusComponent,
     PaginatorComponent,
-    FilterPipe
+    FilterPipe,
+    DetailsMessageComponent
     
   ],
   imports: [

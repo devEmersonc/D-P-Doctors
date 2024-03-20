@@ -25,9 +25,9 @@ export class NavbarComponent implements OnInit{
   }
   
 
-  public dashboard(){
+  public redirectProfile(){
     if(this.login.getUserRole() == 'ROLE_DOCTOR'){
-      this.router.navigate(['/profile']);
+      this.router.navigate(['/profile-doctor']);
     }else if(this.login.getUserRole() == 'ROLE_PATIENT'){
       this.router.navigate(['/profile-patient']);
     }

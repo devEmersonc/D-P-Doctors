@@ -244,4 +244,9 @@ public class DoctorController {
         response.put("message", "El mensaje se ha guardado con éxito.");
         return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
     }
+
+    @GetMapping("/doctors/message/{message_id}")
+    public Message findMessageById(@PathVariable Long message_id){
+        return doctorService.findMessageById(message_id);
+    }
 }

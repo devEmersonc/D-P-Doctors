@@ -27,4 +27,6 @@ public interface DoctorService {
     void deleteDoctor(Long id);
 
     User findByEmail(String email);
+
+    Message findMessageById(Long id);
 }

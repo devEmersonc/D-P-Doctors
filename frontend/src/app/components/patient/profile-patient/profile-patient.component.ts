@@ -17,34 +17,22 @@ export class ProfilePatientComponent implements OnInit{
   errors:string[];
   selectedImage: File | any = null;
 
-  constructor(private patientService: PatientService, public auth: AuthService, private route: ActivatedRoute, private router: Router){}
+  constructor(private patientService: PatientService, public login: AuthService, private route: ActivatedRoute, private router: Router){}
 
   ngOnInit(): void {
 
-    if(this.auth.isLoggedIn()){
-      this.route.paramMap.subscribe(params => {
-        let id:number = Number(params.get('id'));
-        if(id){
-          this.patientService.getPatient(id).subscribe(user => {
-            this.user = user;
-          })
-        }
-      })
+    if(this.login.isLoggedIn()){
+      this.getUser();
+    }else{
+      this.router.navigate(['/']);
     }
-    this.getUser();
   }
 
   getUser(){
-    if(this.auth.isLoggedIn()){
-      this.route.paramMap.subscribe(params => {
-        let id:number = Number(params.get('id'));
-        if(id){
-          this.patientService.getPatient(id).subscribe(user => {
-            this.user = user;
-          })
-        }
-      })
-    }
+    this.login.currentUser().subscribe((user:any) => {
+      this.login.setUser(user);
+      this.user = user;
+    })
   }
 
   updateUser(){

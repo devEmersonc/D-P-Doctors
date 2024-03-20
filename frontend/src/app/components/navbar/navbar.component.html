@@ -23,7 +23,7 @@
           <a class="nav-link" [routerLink]="['/form-register']" [routerLinkActive]="['active']">Registrate gratis</a>
         </li>
         <li class="nav-item" *ngIf="login.isLoggedIn()">
-          <a class="nav-link" (click)="dashboard()" [routerLinkActive]="['active']">
+          <a class="nav-link" (click)="redirectProfile()" [routerLinkActive]="['active']">
             <img class="photo_perfil" *ngIf="doctor?.photo" src="http://localhost:8080/api/doctors/uploads/img/{{doctor.photo}}" alt="profile_picture" width="30px" height="30px" style="cursor: pointer;">
             <img class="photo_perfil" *ngIf="!doctor?.photo" src="../../../assets/user_icon.png" alt="profile_picture" width="30px" height="30px" style="cursor: pointer;">
           </a>

@@ -44,7 +44,6 @@ public class DoctorServiceImpl implements DoctorService {
         return doctorRepo.findAll(pageable);
     }
 
-
     @Override
     public User getDoctor(Long id){
         return doctorRepo.findById(id).orElse(null);
@@ -116,5 +115,10 @@ public class DoctorServiceImpl implements DoctorService {
     @Override
     public User findByEmail(String email){
         return doctorRepo.findByEmail(email);
+    }
+
+    @Override
+    public Message findMessageById(Long id) {
+        return messageRepository.findById(id).orElse(null);
     }
 }

@@ -30,6 +30,10 @@ export class DoctorService {
     );
   }
 
+  getMessage(message_id:number): Observable<Message>{
+    return this.http.get<Message>(this.baseUrl + `/message/` + message_id);
+  }
+
   existsByEmail(email:string): Observable<User>{
     return this.http.get<User>(this.baseUrl + `/email?email=${email}`);
   }

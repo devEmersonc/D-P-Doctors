@@ -16,11 +16,13 @@ export class MessagesComponent implements OnInit{
   constructor(private doctorService: DoctorService, public login: AuthService, private route: ActivatedRoute){}
 
   ngOnInit(): void {
-    let id = this.route.snapshot.params['id'];
-    if(id){
-      this.doctorService.getDoctor(id).subscribe(user => {
-        this.user = user;
-      })
-    }
+    this.getUser();
+  }
+
+  getUser(){
+    this.login.currentUser().subscribe((user:any) => {
+      this.login.setUser(user);
+      this.user = user;
+    })
   }
 }

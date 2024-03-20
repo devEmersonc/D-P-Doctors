@@ -1,3 +1,11 @@
 .nav-pills li a:hover{
     background-color: blue;
 }
+
+.bg-table{
+    background-color: #edf2f5cb;
+}
+
+.bg-head{
+    background-color: #d3e6f7;
+}

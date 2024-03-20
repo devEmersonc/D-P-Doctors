@@ -15,6 +15,7 @@ import { PatientDashboardComponent } from './components/patient/patient-dashboar
 import { ProfilePatientComponent } from './components/patient/profile-patient/profile-patient.component';
 import { ListDoctorsComponent } from './components/doctor/list-doctors/list-doctors.component';
 import { AboutusComponent } from './components/aboutus/aboutus.component';
+import { DetailsMessageComponent } from './components/doctor/messages/details-message/details-message.component';
 
 const routes: Routes = [
   {path: "", component: InicioComponent, pathMatch:"full"},
@@ -23,9 +24,10 @@ const routes: Routes = [
   {path: "dashboard/:id", component: DashBoardComponent, canActivate: [doctorGuard]},
   {path: "dashboard-patient/:id", component: PatientDashboardComponent, canActivate: [patientGuard]},
   {path: "doctors-details-doctor/:id/:string/:string", component: DoctorsDetailsComponent},
-  {path: "profile", component: ProfileDoctorComponent, },
-  {path: "profile/patient", component: ProfilePatientComponent, canActivate: [patientGuard]},
-  {path: "messages/:id", component: MessagesComponent, canActivate: [doctorGuard]},
+  {path: "profile-doctor", component: ProfileDoctorComponent, },
+  {path: "profile-patient", component: ProfilePatientComponent, canActivate: [patientGuard]},
+  {path: "messages", component: MessagesComponent, canActivate: [doctorGuard]},
+  {path: "details-message/:id", component: DetailsMessageComponent, canActivate: [doctorGuard]},
   {path: "form-register", component: FormRegisterComponent},
   {path: "register-patient", component: RegisterPatientComponent},
   {path: "doctors", component: ListDoctorsComponent},
