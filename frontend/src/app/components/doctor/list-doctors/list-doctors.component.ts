@@ -11,6 +11,7 @@ import { DoctorService } from 'src/app/services/doctor-service/doctor.service';
 })
 export class ListDoctorsComponent implements OnInit{
 
+  users:User[] = [];
   doctors:User[] = [];
   thisUser:User = new User();
   paginator:any;
@@ -28,8 +29,13 @@ export class ListDoctorsComponent implements OnInit{
       }
 
       this.doctorService.getDoctors().subscribe(doctors => {
-        this.doctors = doctors;;
-        for(var doc of this.doctors){
+        this.users = doctors;;
+        for(let doc of this.users){
+          for(let role of doc.roles){
+            if(role.name == 'ROLE_DOCTOR'){
+              this.doctors.push(doc);
+            }
+          }
           if(doc.sex == 'Femenino'){
             doc.specialty = doc.specialty.substring(0, doc.specialty.length -1);
             doc.specialty = doc.specialty.concat('a');

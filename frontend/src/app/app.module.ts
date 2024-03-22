@@ -27,7 +27,6 @@ import { ListDoctorsComponent } from './components/doctor/list-doctors/list-doct
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FooterComponent } from './components/footer/footer.component';
 import { AboutusComponent } from './components/aboutus/aboutus.component';
-import { PaginatorComponent } from './components/paginator/paginator.component';
 import { FilterPipe } from './components/pipes/filter.pipe';
 import { DetailsMessageComponent } from './components/doctor/messages/details-message/details-message.component';
 
@@ -54,7 +53,6 @@ registerLocaleData(localEs, "es-CL");
     ListDoctorsComponent,
     FooterComponent,
     AboutusComponent,
-    PaginatorComponent,
     FilterPipe,
     DetailsMessageComponent
     

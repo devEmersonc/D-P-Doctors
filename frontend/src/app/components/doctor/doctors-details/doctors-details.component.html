@@ -3,7 +3,9 @@
         <div class="col-md-8 col-lg-8 bg">
             <div class="row justify-content-center">
                 <div class="col-md-8 col-lg-5 text-center m-4">
-                    <img class="" src="http://localhost:8080/api/doctors/uploads/img/{{doctor.photo}}" alt="profile_picture" width="200px" height="200px" style="border-radius: 20px;">
+                    <img *ngIf="doctor?.photo" class="" src="http://localhost:8080/api/doctors/uploads/img/{{doctor.photo}}" alt="profile_picture" width="200px" height="200px" style="border-radius: 20px;">
+                    <img *ngIf="!doctor?.photo && doctor.sex == 'Masculino'" class="" src="../../../../assets/profile_male.png" alt="profile_picture" width="200px" height="200px" style="border-radius: 20px;">
+                    <img *ngIf="!doctor?.photo && doctor.sex == 'Femenino'" class="" src="../../../../assets/profile_female.png" alt="profile_picture" width="200px" height="200px" style="border-radius: 20px;">
                 </div>
                 <div class="col-md-6 col-lg-4 mt-4 mb-5 text-center">                   
                     <div class="col">
