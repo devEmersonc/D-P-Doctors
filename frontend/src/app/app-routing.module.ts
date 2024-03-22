@@ -24,7 +24,7 @@ const routes: Routes = [
   {path: "dashboard/:id", component: DashBoardComponent, canActivate: [doctorGuard]},
   {path: "dashboard-patient/:id", component: PatientDashboardComponent, canActivate: [patientGuard]},
   {path: "doctors-details-doctor/:id/:string/:string", component: DoctorsDetailsComponent},
-  {path: "profile-doctor", component: ProfileDoctorComponent, },
+  {path: "profile-doctor", component: ProfileDoctorComponent, canActivate: [doctorGuard]},
   {path: "profile-patient", component: ProfilePatientComponent, canActivate: [patientGuard]},
   {path: "messages", component: MessagesComponent, canActivate: [doctorGuard]},
   {path: "details-message/:id", component: DetailsMessageComponent, canActivate: [doctorGuard]},
