@@ -21,7 +21,7 @@
       <div class="card mt-5 mb-5 text-center border" style="width: 20rem; border-radius: 50px 50px 50px 50px ;">
         <div *ngFor="let role of doctor.roles">
           <div *ngIf="role.name == 'ROLE_DOCTOR'">
-            <img *ngIf="doctor?.photo" src="http://localhost:8080/api/doctors/uploads/img/{{doctor.photo}}" alt="profile_picture" class="card-img-top" style="height: 300px; border-radius: 50px 50px 0px 0px;">
+            <img *ngIf="doctor?.photo" src="http://localhost:8080/api/doctors/view/img/{{doctor.photo}}" alt="profile_picture" class="card-img-top" style="height: 300px; border-radius: 50px 50px 0px 0px;">
             <img *ngIf="!doctor?.photo && doctor.sex == 'Masculino'" src="../../../../assets/profile_male.png" alt="profile_picture" class="card-img-top" style="height: 300px; border-radius: 50px 50px 0px 0px;">
             <img *ngIf="!doctor?.photo && doctor.sex == 'Femenino'" src="../../../../assets/profile_female.png" alt="profile_picture" class="card-img-top" style="height: 300px; border-radius: 50px 50px 0px 0px;">
             <div class="card-body">

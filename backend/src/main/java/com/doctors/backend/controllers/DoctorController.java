@@ -30,30 +30,31 @@ import java.nio.file.Paths;
 import java.util.*;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/doctors")
 @CrossOrigin(origins = "http://localhost:4200")
 public class DoctorController {
 
     @Autowired
     private DoctorService doctorService;
 
-    @GetMapping("/doctors")
+    @GetMapping("/all-doctors")
     public List<User> getDoctors() {
         return doctorService.getDoctors();
     }
 
-    @GetMapping("/doctors/page/{page}")
+            //Paginator
+    /*@GetMapping("/doctors/page/{page}")
     public Page<User> getDoctors(@PathVariable Integer page) {
         return doctorService.findAll(PageRequest.of(page, 9));
-    }
+    }*/
 
 
-    @GetMapping("/doctors/{id}")
+    @GetMapping("/doctor/{id}")
     public User getDoctor(@PathVariable Long id) {
         return doctorService.getDoctor(id);
     }
 
-    @GetMapping("/doctors/email")
+    @GetMapping("/doctor/email")
     public ResponseEntity<?> findDoctorByEmail(@RequestParam(value = "email") String email){
         User doctor = doctorService.findByEmail(email);
 
@@ -75,7 +76,7 @@ public class DoctorController {
         return new ResponseEntity<Map<String, Object>>(response, HttpStatus.OK);
     }
 
-    @PostMapping("/doctors")
+    @PostMapping("/register")
     public ResponseEntity<?> register(@Valid @RequestBody User doctor, BindingResult result) {
         User newDoctor = null;
         Map<String, Object> response = new HashMap<>();
@@ -108,7 +109,7 @@ public class DoctorController {
         return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
     }
 
-    @PutMapping("/doctors/{id}")
+    @PutMapping("/update/{id}")
     public ResponseEntity<?> update(@Valid @RequestBody User doctor, BindingResult result, @PathVariable Long id) {
         User currentDoctor = doctorService.getDoctor(id);
         User updatedDoctor = null;
@@ -143,15 +144,14 @@ public class DoctorController {
     }
 
 
-    //specialties
+            //specialties
 
-    @GetMapping("/doctors/specialties")
+    /*@GetMapping("/doctors/specialties")
     public List<Specialty> findAllSpecialties() {
         return doctorService.findAllSpecialties();
-    }
+    }*/
 
-    //upload image
-    @PostMapping("/doctors/upload")
+    @PostMapping("/upload/image")
     public ResponseEntity<?> uploadImage(@RequestParam("image") MultipartFile image, @RequestParam("id") Long id) {
         Map<String, Object> response = new HashMap<>();
         User doctor = doctorService.getDoctor(id);
@@ -190,7 +190,7 @@ public class DoctorController {
         return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
     }
 
-    @GetMapping("/doctors/uploads/img/{imageName:.+}")
+    @GetMapping("/view/img/{imageName:.+}")
     public ResponseEntity<Resource> viewImage(@PathVariable String imageName) {
 
         Path filePath = Paths.get("uploads").resolve(imageName).toAbsolutePath();
@@ -218,7 +218,7 @@ public class DoctorController {
         return new ResponseEntity<Resource>(recurso, header, HttpStatus.OK);
     }
 
-    @PostMapping("/doctors/{user_id}")
+    @PostMapping("/message/{user_id}")
     public ResponseEntity<?> saveMessage(@Valid @RequestBody Message message, BindingResult result, @PathVariable Long user_id) {
         User user = doctorService.getDoctor(user_id);
         Map<String, Object> response = new HashMap<>();
@@ -245,7 +245,7 @@ public class DoctorController {
         return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
     }
 
-    @GetMapping("/doctors/message/{message_id}")
+    @GetMapping("/message/{message_id}")
     public Message findMessageById(@PathVariable Long message_id){
         return doctorService.findMessageById(message_id);
     }

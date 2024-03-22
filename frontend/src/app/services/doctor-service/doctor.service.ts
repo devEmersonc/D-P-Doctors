@@ -16,10 +16,11 @@ export class DoctorService {
   constructor(private http: HttpClient) { }
 
   getDoctors(): Observable<User[]>{
-    return this.http.get<User[]>(`${this.baseUrl}`);
+    return this.http.get<User[]>(`${this.baseUrl}/all-doctors`);
   }
 
-  pages(page:number): Observable<any>{
+      //Paginator      
+  /*pages(page:number): Observable<any>{
     return this.http.get<any>(this.baseUrl + '/page/' + page).pipe(
       map((response:any) => {
         (response.content as User[]).map(user => {
@@ -28,22 +29,22 @@ export class DoctorService {
         return response;
       })
     );
-  }
+  }*/
 
   getMessage(message_id:number): Observable<Message>{
     return this.http.get<Message>(this.baseUrl + `/message/` + message_id);
   }
 
   existsByEmail(email:string): Observable<User>{
-    return this.http.get<User>(this.baseUrl + `/email?email=${email}`);
+    return this.http.get<User>(this.baseUrl + `/doctor/email?email=${email}`);
   }
 
   getDoctor(id:number): Observable<User>{
-    return this.http.get<User>(`${this.baseUrl}/${id}`);
+    return this.http.get<User>(`${this.baseUrl}/doctor/${id}`);
   }
 
   registerDoctor(doctor:User): Observable<User>{
-    return this.http.post<User>(`${this.baseUrl}`, doctor).pipe(
+    return this.http.post<User>(`${this.baseUrl}/register`, doctor).pipe(
       catchError(e => {
         if(e.status == 400){
           return throwError(() => e);
@@ -56,7 +57,7 @@ export class DoctorService {
   }
 
   updateUser(user:User): Observable<any>{
-    return this.http.put<any>(`${this.baseUrl}/${user.id}`, user).pipe(
+    return this.http.put<any>(`${this.baseUrl}/update/${user.id}`, user).pipe(
       catchError(e => {
         if(e.status == 400){
           Swal.fire(e.error.message, e.error.error, "error");
@@ -78,7 +79,7 @@ export class DoctorService {
       formData.append("image", image);
       formData.append("id", id);
 
-      return this.http.post(`${this.baseUrl}/upload`, formData).pipe(
+      return this.http.post(`${this.baseUrl}/upload/image`, formData).pipe(
         map((response : any) => response.user as User),
         catchError(e => {
           Swal.fire(e.error.message, e.error.error, "error");
@@ -88,7 +89,7 @@ export class DoctorService {
   }
   
   saveFormMessage(message: Message, id:number): Observable<Message>{
-    return this.http.post<Message>(`${this.baseUrl}/${id}`, message).pipe(
+    return this.http.post<Message>(`${this.baseUrl}/message/${id}`, message).pipe(
       catchError(e => {
         if(e.status == 400){
           return throwError(() => e);
