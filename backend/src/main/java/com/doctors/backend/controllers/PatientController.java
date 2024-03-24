@@ -24,7 +24,7 @@ import java.nio.file.Paths;
 import java.util.*;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/patients")
 @CrossOrigin(origins = "http://localhost:4200")
 public class PatientController {
 
@@ -36,7 +36,7 @@ public class PatientController {
         return patientService.getUser(user_id);
     }
 
-    @PostMapping("/patient/register")
+    @PostMapping("/register")
     public ResponseEntity<?> registerPatient(@Valid @RequestBody User patient, BindingResult result){
         User newPatient = null;
         Map<String, Object> response = new HashMap<>();
@@ -68,7 +68,7 @@ public class PatientController {
         return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
     }
 
-    @PutMapping("/patient/{user_id}")
+    @PutMapping("/update/{user_id}")
     public ResponseEntity<?> updateUser(@Valid @RequestBody User user, BindingResult result, @PathVariable Long user_id){
         User currentUser = patientService.getUser(user_id);
         User updatedUser = null;
@@ -102,7 +102,7 @@ public class PatientController {
         return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
     }
 
-    @PostMapping("/patient/upload")
+    @PostMapping("/upload/image")
     public ResponseEntity<?> uploadImage(@RequestParam("image") MultipartFile image, @RequestParam("id") Long id) {
         Map<String, Object> response = new HashMap<>();
         User patient = patientService.getUser(id);
@@ -141,7 +141,7 @@ public class PatientController {
         return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
     }
 
-    @GetMapping("/patient/uploads/img/{imageName:.+}")
+    @GetMapping("/view/img/{imageName:.+}")
     public ResponseEntity<Resource> viewImage(@PathVariable String imageName) {
 
         Path filePath = Paths.get("uploads").resolve(imageName).toAbsolutePath();

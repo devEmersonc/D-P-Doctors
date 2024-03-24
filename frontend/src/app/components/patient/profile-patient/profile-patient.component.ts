@@ -20,12 +20,7 @@ export class ProfilePatientComponent implements OnInit{
   constructor(private patientService: PatientService, public login: AuthService, private route: ActivatedRoute, private router: Router){}
 
   ngOnInit(): void {
-
-    if(this.login.isLoggedIn()){
-      this.getUser();
-    }else{
-      this.router.navigate(['/']);
-    }
+    this.getUser();
   }
 
   getUser(){
@@ -43,8 +38,6 @@ export class ProfilePatientComponent implements OnInit{
 
     this.patientService.updatePatient(this.thisUser).subscribe({
       next: (json) => {
-        this.router.navigate(['/profile/patient', this.thisUser.id]);
-        this.getUser();
         Swal.fire({
           position: "center",
           icon: "success",
@@ -72,7 +65,7 @@ export class ProfilePatientComponent implements OnInit{
       Swal.fire("Error", "Debe seleccionar una imagen", "error");
     }else{
       this.patientService.uploadImage(this.selectedImage, this.user.id).subscribe(user => {
-        this.router.navigate(['/profile/patient', this.user.id])
+        window.location.reload();
         this.getUser();
         Swal.fire({
           position: "center",

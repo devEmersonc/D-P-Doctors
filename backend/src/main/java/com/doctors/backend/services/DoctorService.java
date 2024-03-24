@@ -29,4 +29,6 @@ public interface DoctorService {
     User findByEmail(String email);
 
     Message findMessageById(Long id);
+
+    void deleteMessageById(Long id);
 }

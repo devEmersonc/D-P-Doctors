@@ -42,8 +42,8 @@ export class ListDoctorsComponent implements OnInit{
           }
           if(this.login.isLoggedIn()){
             this.doctors = this.doctors.filter(
-              doc => doc.email !== this.thisUser.email            
-            ); 
+              doc => doc.email !== this.thisUser.email          
+            );            
           }else{
             this.doctors = this.doctors;
           }

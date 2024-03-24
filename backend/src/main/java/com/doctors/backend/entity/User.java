@@ -5,12 +5,14 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -37,6 +39,7 @@ public class User implements UserDetails {
 
     private String photo;
 
+    @NotBlank(message = "La contraseña es obligatoria.")
     private String password;
 
     private String phone;
@@ -44,6 +47,13 @@ public class User implements UserDetails {
     private String sex;
 
     private String specialty;
+
+    @Column(updatable = false)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date createdAt;
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date updatedAt;
 
     /*@ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "specialty_id")
@@ -116,6 +126,32 @@ public class User implements UserDetails {
 
     public void setSex(String sex) {
         this.sex = sex;
+    }
+
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public Date getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(Date updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
+    @PrePersist
+    protected void onCreate(){
+        this.createdAt = new Date();
+    }
+
+    @PreUpdate
+    protected void onUpdate(){
+        this.updatedAt = new Date();
     }
 
     @Override

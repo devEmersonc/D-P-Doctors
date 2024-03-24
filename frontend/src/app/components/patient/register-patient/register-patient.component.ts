@@ -24,7 +24,7 @@ export class RegisterPatientComponent implements OnInit{
     this.patientService.registerPatient(this.patient).subscribe({
       next: (json) => {
         this.router.navigate(['/login']);
-        Swal.fire("Registro exitoso!")
+        Swal.fire("Registro exitoso!");
       },
       error: (err) => {
         this.errors = err.error.errors as string[];

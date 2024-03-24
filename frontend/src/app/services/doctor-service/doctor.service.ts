@@ -100,4 +100,17 @@ export class DoctorService {
       })
     )
   }
+
+  deleteMessage(message_id:number){
+    return this.http.delete(`${this.baseUrl}/delete/message/${message_id}`).pipe(
+      catchError(e => {
+        if(e.status == 400){
+          return throwError(() => e);
+        }
+
+        Swal.fire(e.error.message, e.error.error, "error");
+        return throwError(() => e);
+      })
+    );
+  }
 }

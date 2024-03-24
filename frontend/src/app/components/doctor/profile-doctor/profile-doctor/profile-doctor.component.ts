@@ -70,7 +70,7 @@ export class ProfileDoctorComponent implements OnInit{
       Swal.fire("Error", "Debe seleccionar una imagen", "error");
     }else{
       this.doctorService.uploadImage(this.selectedImage, this.user.id).subscribe(user => {
-        this.router.navigate(['/profile', this.user.id])
+        window.location.reload();
         this.getUser();
         Swal.fire({
           position: "center",

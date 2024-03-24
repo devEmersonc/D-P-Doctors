@@ -9,12 +9,12 @@ import Swal from 'sweetalert2';
 })
 export class PatientService {
 
-  private baseUrl = "http://localhost:8080/api/patient"
+  private baseUrl = "http://localhost:8080/api/patients"
 
   constructor(private http: HttpClient) { }
 
   getPatient(id:number): Observable<User>{
-    return this.http.get<User>(`${this.baseUrl}/${id}`);
+    return this.http.get<User>(`${this.baseUrl}/patient/${id}`);
   }
 
   registerPatient(patient: User): Observable<User>{
@@ -31,7 +31,7 @@ export class PatientService {
   }
 
   updatePatient(patient: User): Observable<User>{
-    return this.http.put<User>(`${this.baseUrl}/${patient.id}`, patient).pipe(
+    return this.http.put<User>(`${this.baseUrl}/update/${patient.id}`, patient).pipe(
       catchError(e => {
         if(e.status == 400){
           return throwError(() => e);
@@ -48,7 +48,7 @@ export class PatientService {
     formData.append("image", image);
     formData.append("id", id);
 
-    return this.http.post(`${this.baseUrl}/upload`, formData).pipe(
+    return this.http.post(`${this.baseUrl}/upload/image`, formData).pipe(
       map((response:any) => response.user as User),
       catchError(e => {
         Swal.fire(e.error.message, e.error.error, "error");

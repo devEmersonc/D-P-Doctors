@@ -249,4 +249,9 @@ public class DoctorController {
     public Message findMessageById(@PathVariable Long message_id){
         return doctorService.findMessageById(message_id);
     }
+
+    @DeleteMapping("/delete/message/{message_id}")
+    public void deleteMessage(@PathVariable Long message_id){
+        doctorService.deleteMessageById(message_id);
+    }
 }

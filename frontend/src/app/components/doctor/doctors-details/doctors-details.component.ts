@@ -41,14 +41,15 @@ export class DoctorsDetailsComponent implements OnInit{
 
   saveFormMessage(){
     this.doctorService.saveFormMessage(this.message, this.doctor.id).subscribe({
-      next: (json) => {        
+      next: (json) => {  
+        window.location.reload();      
         Swal.fire({
           position: "center",
           icon: "success",
           title: "¡Mensaje enviado con éxito!",
           showConfirmButton: false,
           timer: 2000,
-        })
+        })        
       },
       error: (err) => {
         this.errors = err.error.errors as string[];   

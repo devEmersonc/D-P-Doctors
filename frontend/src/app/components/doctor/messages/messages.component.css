@@ -9,3 +9,8 @@
 .bg-head{
     background-color: #d3e6f7;
 }
+
+.notMessages{
+    border-radius: 80px;
+    background-color: #aec4c921;
+}

@@ -121,4 +121,9 @@ public class DoctorServiceImpl implements DoctorService {
     public Message findMessageById(Long id) {
         return messageRepository.findById(id).orElse(null);
     }
+
+    @Override
+    public void deleteMessageById(Long id){
+        messageRepository.deleteById(id);
+    }
 }
