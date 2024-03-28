@@ -40,6 +40,7 @@ export class ProfileDoctorComponent implements OnInit{
     this.thisuser.phone = this.user.phone;
     this.thisuser.sex = this.user.sex;
     this.thisuser.specialty = this.user.specialty;
+    this.thisuser.password = this.user.password;
 
     this.doctorService.updateUser(this.thisuser).subscribe({
       next: (json) => {    

@@ -35,6 +35,7 @@ export class ProfilePatientComponent implements OnInit{
     this.thisUser.firstname = this.user.firstname;
     this.thisUser.lastname = this.user.lastname;
     this.thisUser.email = this.user.email;
+    this.thisUser.password = this.user.password;
 
     this.patientService.updatePatient(this.thisUser).subscribe({
       next: (json) => {
