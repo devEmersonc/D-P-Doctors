@@ -9,18 +9,18 @@ import Swal from 'sweetalert2';
   templateUrl: './register-patient.component.html',
   styleUrls: ['./register-patient.component.css']
 })
-export class RegisterPatientComponent implements OnInit{
+export class RegisterPatientComponent implements OnInit {
 
-  patient:User = new User();
-  errors:string[];
+  patient: User = new User();
+  errors: string[];
 
-  constructor(private patientService: PatientService, private router: Router){}
+  constructor(private patientService: PatientService, private router: Router) { }
 
   ngOnInit(): void {
-    
+
   }
 
-  registerPatient(){
+  registerPatient() {
     this.patientService.registerPatient(this.patient).subscribe({
       next: (json) => {
         this.router.navigate(['/login']);

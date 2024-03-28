@@ -10,28 +10,28 @@ import Swal from 'sweetalert2';
   templateUrl: './profile-doctor.component.html',
   styleUrls: ['./profile-doctor.component.css']
 })
-export class ProfileDoctorComponent implements OnInit{
+export class ProfileDoctorComponent implements OnInit {
 
-  user:User = new User();
-  thisuser:User = new User();
-  errors:string[];
+  user: User = new User();
+  thisuser: User = new User();
+  errors: string[];
   selectedImage: File | any = null;
-  specialties:string[] = ["Cardiólogo", "Ginecólogo", "Neurólogo", "Pediatra", "Radiólogo", "Dermatólogo", "Nutricionista", "Psicólogo", "kinesiólogo", "Fonoaudiólogo", "Dentista", "Oftalmólogo"];
+  specialties: string[] = ["Cardiólogo", "Ginecólogo", "Neurólogo", "Pediatra", "Radiólogo", "Dermatólogo", "Nutricionista", "Psicólogo", "kinesiólogo", "Fonoaudiólogo", "Dentista", "Oftalmólogo"];
 
-  constructor(private doctorService: DoctorService, private route: ActivatedRoute, public login: AuthService, private router:Router){}
+  constructor(private doctorService: DoctorService, private route: ActivatedRoute, public login: AuthService, private router: Router) { }
 
   ngOnInit(): void {
     this.getUser();
   }
 
-  getUser(){
-    this.login.currentUser().subscribe((user:any) => {
+  getUser() {
+    this.login.currentUser().subscribe((user: any) => {
       this.login.setUser(user);
       this.user = user;
     })
   }
 
-  updateUser(){
+  updateUser() {
     this.thisuser.id = this.user.id;
     this.thisuser.firstname = this.user.firstname;
     this.thisuser.lastname = this.user.lastname;
@@ -43,7 +43,7 @@ export class ProfileDoctorComponent implements OnInit{
     this.thisuser.password = this.user.password;
 
     this.doctorService.updateUser(this.thisuser).subscribe({
-      next: (json) => {    
+      next: (json) => {
         window.location.reload();
 
         Swal.fire({
@@ -60,18 +60,18 @@ export class ProfileDoctorComponent implements OnInit{
     })
   }
 
-  selectImage(event: any){
+  selectImage(event: any) {
     this.selectedImage = event.target.files[0];
-    if(this.selectedImage.type.indexOf('image') < 0){
+    if (this.selectedImage.type.indexOf('image') < 0) {
       Swal.fire("Error: ", "La imagen debe ser tipo jpg o png", "error");
       this.selectedImage = null;
     }
   }
 
-  uploadImage(){
-    if(!this.selectedImage){
+  uploadImage() {
+    if (!this.selectedImage) {
       Swal.fire("Error", "Debe seleccionar una imagen", "error");
-    }else{
+    } else {
       this.doctorService.uploadImage(this.selectedImage, this.user.id).subscribe(user => {
         window.location.reload();
         this.getUser();

@@ -8,7 +8,8 @@
                         <div class="form-group row mt-4 mx-auto">
                             <label for="nombre" class="col-form-label col-md-12 col-lg-12 text-center">Nombre</label>
                             <div class="col-lg-12">
-                                <input type="text" id="nombre" name="nombre" class="form-control" [(ngModel)]="doctor.firstname">
+                                <input type="text" id="nombre" name="nombre" class="form-control"
+                                    [(ngModel)]="doctor.firstname">
                             </div>
                             <div *ngFor="let err of errors">
                                 <div class="col-lg-12" *ngIf="errors?.length">
@@ -16,13 +17,15 @@
                                         <p class="text-danger text-center">{{err}}</p>
                                     </div>
                                 </div>
-                            </div>                            
+                            </div>
                         </div>
-            
+
                         <div class="form-group row mt-4 mx-auto">
-                            <label for="apellido" class="col-form-label col-md-12 col-lg-12 text-center">Apellido</label>
+                            <label for="apellido"
+                                class="col-form-label col-md-12 col-lg-12 text-center">Apellido</label>
                             <div class="col-lg-12">
-                                <input type="text" id="apellido" name="apellido" class="form-control" [(ngModel)]="doctor.lastname">
+                                <input type="text" id="apellido" name="apellido" class="form-control"
+                                    [(ngModel)]="doctor.lastname">
                             </div>
                             <div *ngFor="let err of errors">
                                 <div class="col-lg-12" *ngIf="errors?.length">
@@ -32,11 +35,12 @@
                                 </div>
                             </div>
                         </div>
-                    
+
                         <div class="form-group row mt-4 mx-auto">
                             <label for="email" class="col-form-label col-md-12 col-lg-12 text-center">Email</label>
                             <div class="col-lg-12">
-                                <input type="text" id="email" name="email" class="form-control" [(ngModel)]="doctor.email">
+                                <input type="text" id="email" name="email" class="form-control"
+                                    [(ngModel)]="doctor.email">
                             </div>
                             <div *ngFor="let err of errors">
                                 <div class="col-lg-12" *ngIf="errors?.length">
@@ -46,18 +50,21 @@
                                 </div>
                             </div>
                         </div>
-            
+
                         <div class="form-group row mt-4 mx-auto">
                             <label for="phone" class="col-form-label col-md-12 col-lg-12 text-center">Teléfono</label>
                             <div class="col-lg-12">
-                                <input type="text" id="phone" name="phone" class="form-control" [(ngModel)]="doctor.phone">
-                            </div>                            
+                                <input type="text" id="phone" name="phone" class="form-control"
+                                    [(ngModel)]="doctor.phone">
+                            </div>
                         </div>
-                    
+
                         <div class="form-group row mt-4 mx-auto">
-                            <label for="contrasena" class="col-form-label col-md-12 col-lg-12 text-center">Contraseña</label>
+                            <label for="contrasena"
+                                class="col-form-label col-md-12 col-lg-12 text-center">Contraseña</label>
                             <div class="col-lg-12">
-                                <input type="password" id="contrasena" name="contrasena" class="form-control" [(ngModel)]="doctor.password">
+                                <input type="password" id="contrasena" name="contrasena" class="form-control"
+                                    [(ngModel)]="doctor.password">
                             </div>
                             <div *ngFor="let err of errors">
                                 <div class="col-lg-12" *ngIf="errors?.length">
@@ -67,24 +74,27 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div class="form-group row mt-4 mx-auto">
                             <label for="sex" class="col-form-label col-md-12 col-lg-12 text-center">Género</label>
                             <div class="col-lg-12">
-                                <select class="form-select" id="sex" name="sex" aria-label="Default select example" [(ngModel)]="doctor.sex">
+                                <select class="form-select" id="sex" name="sex" aria-label="Default select example"
+                                    [(ngModel)]="doctor.sex">
                                     <option selected>Elige tu género...</option>
-                                    <option *ngFor="let sex of sexes" [ngValue]="sex">{{sex}}</option>                                    
-                                  </select>
+                                    <option *ngFor="let sex of sexes" [ngValue]="sex">{{sex}}</option>
+                                </select>
                             </div>
                         </div>
 
                         <div class="form-group row mt-4 mx-auto">
-                            <label for="s" class="col-form-label col-md-12 col-lg-12 text-center">Especialización</label>
+                            <label for="s"
+                                class="col-form-label col-md-12 col-lg-12 text-center">Especialización</label>
                             <div class="col-lg-12">
-                                <select class="form-select" id="s" name="s" aria-label="Default select example" [(ngModel)]="doctor.specialty">
+                                <select class="form-select" id="s" name="s" aria-label="Default select example"
+                                    [(ngModel)]="doctor.specialty">
                                     <option selected>Elige tu especialización...</option>
-                                    <option *ngFor="let s of specialties" [ngValue]="s">{{s}}</option>                                    
-                                  </select>
+                                    <option *ngFor="let s of specialties" [ngValue]="s">{{s}}</option>
+                                </select>
                             </div>
                             <div *ngFor="let err of errors">
                                 <div class="col-lg-12" *ngIf="errors?.length">
@@ -94,10 +104,11 @@
                                 </div>
                             </div>
                         </div>
-            
+
                         <div class="form-group row mt-4 justify-content-center">
                             <div class="c">
-                                <button class="btn btn-primary mx-auto d-block" (click)="registerDoctor()">Registrar</button>
+                                <button class="btn btn-primary mx-auto d-block"
+                                    (click)="registerDoctor()">Registrar</button>
                             </div>
                         </div>
                     </form>

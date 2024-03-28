@@ -1,28 +1,31 @@
 <div class="container-fluid">
-    <div class="row flex-nowrap">         
-      <div class="col-auto min-vh-100 d-flex flex-column justify-content-between" style="background-color: #d3e6f7;">
-          <app-sidenav></app-sidenav>            
-      </div>
+    <div class="row flex-nowrap">
+        <div class="col-auto min-vh-100 d-flex flex-column justify-content-between" style="background-color: #d3e6f7;">
+            <app-sidenav></app-sidenav>
+        </div>
 
-      <div class="col">
-        <h1 class="mt-4 text-center">Mensaje de {{message.firstname}} {{message.lastname}}</h1>
-        <div class="table mt-4 bg-table">
-            <div class="col text-center mb-3" style="border-bottom: 2px solid; border-bottom-color: rgba(209, 206, 206, 0.479)">
-                <h1 class="pt-3">Email</h1>
-                <h3>{{message.email}}</h3>
+        <div class="col">
+            <h1 class="mt-4 text-center">Mensaje de {{message.firstname}} {{message.lastname}}</h1>
+            <div class="table mt-4 bg-table">
+                <div class="col text-center mb-3"
+                    style="border-bottom: 2px solid; border-bottom-color: rgba(209, 206, 206, 0.479)">
+                    <h1 class="pt-3">Email</h1>
+                    <h3>{{message.email}}</h3>
+                </div>
+                <div class="col text-center mb-3"
+                    style="border-bottom: 2px solid; border-bottom-color: rgba(209, 206, 206, 0.479)">
+                    <h1>Motivo</h1>
+                    <h3>{{message.reason}}</h3>
+                </div>
+                <div class="col text-center mb-3"
+                    style="border-bottom: 2px solid; border-bottom-color: rgba(209, 206, 206, 0.479)">
+                    <h1>Mensaje</h1>
+                    <h3>{{message.message}}</h3>
+                </div>
             </div>
-            <div class="col text-center mb-3" style="border-bottom: 2px solid; border-bottom-color: rgba(209, 206, 206, 0.479)">
-                <h1>Motivo</h1>
-                <h3>{{message.reason}}</h3>
-            </div>
-            <div class="col text-center mb-3" style="border-bottom: 2px solid; border-bottom-color: rgba(209, 206, 206, 0.479)">
-                <h1>Mensaje</h1>
-                <h3>{{message.message}}</h3>
+            <div class="col text-center mt-4">
+                <button class="btn btn-danger" (click)="deleteMessage(message.id)">Eliminar mensaje</button>
             </div>
         </div>
-        <div class="col text-center mt-4">
-            <button class="btn btn-danger" (click)="deleteMessage(message.id)">Eliminar mensaje</button>
-        </div>
-      </div>
     </div>
 </div>

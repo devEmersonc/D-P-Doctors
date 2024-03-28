@@ -10,24 +10,24 @@ import Swal from 'sweetalert2';
   templateUrl: './messages.component.html',
   styleUrls: ['./messages.component.css']
 })
-export class MessagesComponent implements OnInit{
+export class MessagesComponent implements OnInit {
 
   user: User = new User();
 
-  constructor(private doctorService: DoctorService, public login: AuthService, private route: ActivatedRoute, private router: Router){}
+  constructor(private doctorService: DoctorService, public login: AuthService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
     this.getUser();
   }
 
-  getUser(){
-    this.login.currentUser().subscribe((user:any) => {
+  getUser() {
+    this.login.currentUser().subscribe((user: any) => {
       this.login.setUser(user);
       this.user = user;
     })
   }
 
-  deleteMessage(message_id:number){
+  deleteMessage(message_id: number) {
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
         confirmButton: 'btn btn-success',
@@ -35,7 +35,7 @@ export class MessagesComponent implements OnInit{
       },
       buttonsStyling: false
     })
-    
+
     swalWithBootstrapButtons.fire({
       title: '¿Está seguro?',
       text: `¿Seguro que desea eliminar el mensaje?`,
@@ -54,7 +54,7 @@ export class MessagesComponent implements OnInit{
           )
           window.location.reload();
         })
-      }      
+      }
     })
   }
 }

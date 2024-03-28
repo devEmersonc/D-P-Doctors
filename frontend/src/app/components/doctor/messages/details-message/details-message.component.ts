@@ -11,37 +11,37 @@ import Swal from 'sweetalert2';
   templateUrl: './details-message.component.html',
   styleUrls: ['./details-message.component.css']
 })
-export class DetailsMessageComponent implements OnInit{
+export class DetailsMessageComponent implements OnInit {
 
-  doctor:User = new User();
-  message:Message = new Message();
+  doctor: User = new User();
+  message: Message = new Message();
 
-  constructor(public login:AuthService, private router: Router, private doctorService: DoctorService, private route: ActivatedRoute){}
+  constructor(public login: AuthService, private router: Router, private doctorService: DoctorService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    if(this.login.isLoggedIn()){
+    if (this.login.isLoggedIn()) {
       this.getMessage();
-    }else{
+    } else {
       this.router.navigate(['/']);
     }
   }
 
-  getUser(){
-   this.login.currentUser().subscribe((user:any) => {
-    this.login.setUser(user);
-    this.doctor = user;
-   }) 
+  getUser() {
+    this.login.currentUser().subscribe((user: any) => {
+      this.login.setUser(user);
+      this.doctor = user;
+    })
   }
 
-  getMessage(){
+  getMessage() {
     this.route.paramMap.subscribe(params => {
-      let id:number = Number(params.get('id'));
-      if(id){
+      let id: number = Number(params.get('id'));
+      if (id) {
         this.doctorService.getMessage(id).subscribe(message => {
           this.message = message;
           window.scrollTo({
-            top:0,
-            left:0,
+            top: 0,
+            left: 0,
             behavior: 'smooth'
           });
         })
@@ -49,7 +49,7 @@ export class DetailsMessageComponent implements OnInit{
     })
   }
 
-  deleteMessage(message_id:number){
+  deleteMessage(message_id: number) {
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
         confirmButton: 'btn btn-success',
@@ -57,7 +57,7 @@ export class DetailsMessageComponent implements OnInit{
       },
       buttonsStyling: false
     })
-    
+
     swalWithBootstrapButtons.fire({
       title: '¿Está seguro?',
       text: `¿Seguro que desea eliminar el mensaje?`,
@@ -76,7 +76,7 @@ export class DetailsMessageComponent implements OnInit{
           )
           this.router.navigate(['/messages'])
         })
-      }      
+      }
     })
   }
 }

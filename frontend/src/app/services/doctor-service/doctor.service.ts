@@ -2,7 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, Subject, catchError, throwError, map } from 'rxjs';
 import { Message } from 'src/app/models/message';
-import { Specialty } from 'src/app/models/specialty';
 import { User } from 'src/app/models/user';
 import Swal from 'sweetalert2';
 
@@ -15,11 +14,11 @@ export class DoctorService {
 
   constructor(private http: HttpClient) { }
 
-  getDoctors(): Observable<User[]>{
+  getDoctors(): Observable<User[]> {
     return this.http.get<User[]>(`${this.baseUrl}/all-doctors`);
   }
 
-      //Paginator      
+  //Paginator      
   /*pages(page:number): Observable<any>{
     return this.http.get<any>(this.baseUrl + '/page/' + page).pipe(
       map((response:any) => {
@@ -31,22 +30,22 @@ export class DoctorService {
     );
   }*/
 
-  getMessage(message_id:number): Observable<Message>{
+  getMessage(message_id: number): Observable<Message> {
     return this.http.get<Message>(this.baseUrl + `/message/` + message_id);
   }
 
-  existsByEmail(email:string): Observable<User>{
+  existsByEmail(email: string): Observable<User> {
     return this.http.get<User>(this.baseUrl + `/doctor/email?email=${email}`);
   }
 
-  getDoctor(id:number): Observable<User>{
+  getDoctor(id: number): Observable<User> {
     return this.http.get<User>(`${this.baseUrl}/doctor/${id}`);
   }
 
-  registerDoctor(doctor:User): Observable<User>{
+  registerDoctor(doctor: User): Observable<User> {
     return this.http.post<User>(`${this.baseUrl}/register`, doctor).pipe(
       catchError(e => {
-        if(e.status == 400){
+        if (e.status == 400) {
           return throwError(() => e);
         }
 
@@ -56,10 +55,10 @@ export class DoctorService {
     )
   }
 
-  updateUser(user:User): Observable<any>{
+  updateUser(user: User): Observable<any> {
     return this.http.put<any>(`${this.baseUrl}/update/${user.id}`, user).pipe(
       catchError(e => {
-        if(e.status == 400){
+        if (e.status == 400) {
           Swal.fire(e.error.message, e.error.error, "error");
           return throwError(() => e);
         }
@@ -70,28 +69,24 @@ export class DoctorService {
     )
   }
 
-  getSpecialties(): Observable<Specialty[]>{
-    return this.http.get<Specialty[]>(`${this.baseUrl}/specialties`);
+  uploadImage(image: File, id: any): Observable<User> {
+    let formData = new FormData();
+    formData.append("image", image);
+    formData.append("id", id);
+
+    return this.http.post(`${this.baseUrl}/upload/image`, formData).pipe(
+      map((response: any) => response.user as User),
+      catchError(e => {
+        Swal.fire(e.error.message, e.error.error, "error");
+        return throwError(() => e);
+      })
+    )
   }
 
-  uploadImage(image: File, id:any): Observable<User>{
-      let formData = new FormData();
-      formData.append("image", image);
-      formData.append("id", id);
-
-      return this.http.post(`${this.baseUrl}/upload/image`, formData).pipe(
-        map((response : any) => response.user as User),
-        catchError(e => {
-          Swal.fire(e.error.message, e.error.error, "error");
-          return throwError(() => e);
-        }) 
-      )     
-  }
-  
-  saveFormMessage(message: Message, id:number): Observable<Message>{
+  saveFormMessage(message: Message, id: number): Observable<Message> {
     return this.http.post<Message>(`${this.baseUrl}/message/${id}`, message).pipe(
       catchError(e => {
-        if(e.status == 400){
+        if (e.status == 400) {
           return throwError(() => e);
         }
 
@@ -101,10 +96,10 @@ export class DoctorService {
     )
   }
 
-  deleteMessage(message_id:number){
+  deleteMessage(message_id: number) {
     return this.http.delete(`${this.baseUrl}/delete/message/${message_id}`).pipe(
       catchError(e => {
-        if(e.status == 400){
+        if (e.status == 400) {
           return throwError(() => e);
         }
 

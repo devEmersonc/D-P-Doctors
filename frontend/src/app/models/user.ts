@@ -1,6 +1,5 @@
 import { Message } from "./message";
 import { Role } from "./role";
-import { Specialty } from "./specialty";
 
 export class User{
     id:number;

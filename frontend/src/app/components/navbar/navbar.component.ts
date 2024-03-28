@@ -9,31 +9,31 @@ import { DoctorService } from 'src/app/services/doctor-service/doctor.service';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
-export class NavbarComponent implements OnInit{
+export class NavbarComponent implements OnInit {
 
   doctor: User = new User();
 
-  constructor(private doctorService: DoctorService, public login: AuthService, private router: Router){}
+  constructor(private doctorService: DoctorService, public login: AuthService, private router: Router) { }
 
   ngOnInit(): void {
-    if(this.login.isLoggedIn()){
-      this.login.getCurrentUser().subscribe((user:any) => {
+    if (this.login.isLoggedIn()) {
+      this.login.getCurrentUser().subscribe((user: any) => {
         this.login.setUser(user);
         this.doctor = user;
       })
     }
   }
-  
 
-  public redirectProfile(){
-    if(this.login.getUserRole() == 'ROLE_DOCTOR'){
+
+  public redirectProfile() {
+    if (this.login.getUserRole() == 'ROLE_DOCTOR') {
       this.router.navigate(['/profile-doctor']);
-    }else if(this.login.getUserRole() == 'ROLE_PATIENT'){
+    } else if (this.login.getUserRole() == 'ROLE_PATIENT') {
       this.router.navigate(['/profile-patient']);
     }
   }
 
-  public logout(){
+  public logout() {
     this.login.logout();
     this.router.navigate(['/'])
   }

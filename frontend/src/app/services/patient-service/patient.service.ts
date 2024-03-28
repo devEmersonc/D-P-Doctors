@@ -13,14 +13,14 @@ export class PatientService {
 
   constructor(private http: HttpClient) { }
 
-  getPatient(id:number): Observable<User>{
+  getPatient(id: number): Observable<User> {
     return this.http.get<User>(`${this.baseUrl}/patient/${id}`);
   }
 
-  registerPatient(patient: User): Observable<User>{
+  registerPatient(patient: User): Observable<User> {
     return this.http.post<User>(`${this.baseUrl}/register`, patient).pipe(
       catchError(e => {
-        if(e.status == 400){
+        if (e.status == 400) {
           return throwError(() => e);
         }
 
@@ -30,10 +30,10 @@ export class PatientService {
     )
   }
 
-  updatePatient(patient: User): Observable<User>{
+  updatePatient(patient: User): Observable<User> {
     return this.http.put<User>(`${this.baseUrl}/update/${patient.id}`, patient).pipe(
       catchError(e => {
-        if(e.status == 400){
+        if (e.status == 400) {
           return throwError(() => e);
         }
 
@@ -43,13 +43,13 @@ export class PatientService {
     )
   }
 
-  uploadImage(image: File, id:any): Observable<User>{
+  uploadImage(image: File, id: any): Observable<User> {
     let formData = new FormData();
     formData.append("image", image);
     formData.append("id", id);
 
     return this.http.post(`${this.baseUrl}/upload/image`, formData).pipe(
-      map((response:any) => response.user as User),
+      map((response: any) => response.user as User),
       catchError(e => {
         Swal.fire(e.error.message, e.error.error, "error");
         return throwError(() => e);

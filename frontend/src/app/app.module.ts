@@ -9,7 +9,6 @@ import { RegisterComponent } from './components/doctor/register/register.compone
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ContentComponent } from './components/content/content.component';
 import { LoginComponent } from './components/login/login.component';
-import { DashBoardComponent } from './components/doctor-dashboard/dashboard.component'
 import { AuthInterceptor} from './services/auth.interceptor';
 import { InicioComponent } from './components/inicio/inicio.component';
 import { BannerComponent } from './components/inicio/banner/banner.component';
@@ -21,7 +20,6 @@ import { registerLocaleData } from '@angular/common';
 import localEs from '@angular/common/locales/es-CL';
 import { FormRegisterComponent } from './components/form-register/form-register.component';
 import { RegisterPatientComponent } from './components/patient/register-patient/register-patient.component';
-import { PatientDashboardComponent } from './components/patient/patient-dashboard/patient-dashboard.component';
 import { ProfilePatientComponent } from './components/patient/profile-patient/profile-patient.component';
 import { ListDoctorsComponent } from './components/doctor/list-doctors/list-doctors.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -43,12 +41,10 @@ registerLocaleData(localEs, "es-CL");
     InicioComponent,
     BannerComponent,
     DoctorsDetailsComponent,
-    DashBoardComponent,
     SidenavComponent,
     MessagesComponent,
     FormRegisterComponent,
     RegisterPatientComponent,
-    PatientDashboardComponent,
     ProfilePatientComponent,
     ListDoctorsComponent,
     FooterComponent,

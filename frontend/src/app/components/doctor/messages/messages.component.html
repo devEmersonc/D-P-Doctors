@@ -1,42 +1,42 @@
 <div class="container-fluid">
-    <div class="row flex-nowrap">         
-      <div class="col-auto min-vh-100 d-flex flex-column justify-content-between" style="background-color: #d3e6f7;">
-          <app-sidenav></app-sidenav>            
-      </div>
-        
-      <div *ngIf="user.messages.length > 0" class="col table-responsive-sm table-responsive-md text-center mt-5 mb-5">
-        <table class="table table-hover" *ngIf="login.getUserRole() == 'ROLE_DOCTOR' && this.login.isLoggedIn()">
-            <thead>
-              <tr>
-                <th class="bg-head" scope="col">Nombre</th>
-                <th class="bg-head" scope="col">Email</th>
-                <th class="bg-head" scope="col">Motivo</th>
-                <th class="bg-head" scope="col">Fecha de envío</th>                    
-                <th class="bg-head" scope="col">Ver</th>
-                <th class="bg-head" scope="col">Eliminar</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr class="" *ngFor="let mess of user.messages">
-                <td class="p-3 bg-table">{{mess.firstname}} {{mess.lastname}}</td>
-                <td class="p-3 bg-table">{{mess.email}}</td>
-                <td class="p-3 bg-table">{{mess.reason}}</td>
-                <td class="p-3 bg-table">{{mess.createdAt | date:'dd - MMMM - yyyy'}}</td>
-                <td class="p-2 bg-table">
-                    <a class="btn btn-primary" [routerLink]="['/details-message/', mess.id]">Ver</a>
-                </td>
-                <td class="p-2 bg-table">
-                  <a class="btn btn-danger" (click)="deleteMessage(mess.id);">Eliminar</a>
-              </td>
-              </tr>                  
-            </tbody>
-          </table>
-      </div>
+  <div class="row flex-nowrap">
+    <div class="col-auto min-vh-100 d-flex flex-column justify-content-between" style="background-color: #d3e6f7;">
+      <app-sidenav></app-sidenav>
+    </div>
 
-      <div *ngIf="user.messages.length <= 0" class="col table-responsive-sm table-responsive-md text-center mt-5 mb-5">
-        <div class="col">
-          <h1 class="p-5">No tienes mensajes en tu bandeja de entrada</h1>
-        </div>
+    <div *ngIf="user.messages.length > 0" class="col table-responsive-sm table-responsive-md text-center mt-5 mb-5">
+      <table class="table table-hover" *ngIf="login.getUserRole() == 'ROLE_DOCTOR' && this.login.isLoggedIn()">
+        <thead>
+          <tr>
+            <th class="bg-head" scope="col">Nombre</th>
+            <th class="bg-head" scope="col">Email</th>
+            <th class="bg-head" scope="col">Motivo</th>
+            <th class="bg-head" scope="col">Fecha de envío</th>
+            <th class="bg-head" scope="col">Ver</th>
+            <th class="bg-head" scope="col">Eliminar</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="" *ngFor="let mess of user.messages">
+            <td class="p-3 bg-table">{{mess.firstname}} {{mess.lastname}}</td>
+            <td class="p-3 bg-table">{{mess.email}}</td>
+            <td class="p-3 bg-table">{{mess.reason}}</td>
+            <td class="p-3 bg-table">{{mess.createdAt | date:'dd - MMMM - yyyy'}}</td>
+            <td class="p-2 bg-table">
+              <a class="btn btn-primary" [routerLink]="['/details-message/', mess.id]">Ver</a>
+            </td>
+            <td class="p-2 bg-table">
+              <a class="btn btn-danger" (click)="deleteMessage(mess.id);">Eliminar</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div *ngIf="user.messages.length <= 0" class="col table-responsive-sm table-responsive-md text-center mt-5 mb-5">
+      <div class="col">
+        <h1 class="p-5">No tienes mensajes en tu bandeja de entrada</h1>
       </div>
     </div>
+  </div>
 </div>

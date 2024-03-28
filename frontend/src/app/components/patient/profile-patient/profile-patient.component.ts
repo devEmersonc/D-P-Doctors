@@ -10,27 +10,27 @@ import Swal from 'sweetalert2';
   templateUrl: './profile-patient.component.html',
   styleUrls: ['./profile-patient.component.css']
 })
-export class ProfilePatientComponent implements OnInit{
+export class ProfilePatientComponent implements OnInit {
 
-  user:User = new User();
-  thisUser:User = new User();
-  errors:string[];
+  user: User = new User();
+  thisUser: User = new User();
+  errors: string[];
   selectedImage: File | any = null;
 
-  constructor(private patientService: PatientService, public login: AuthService, private route: ActivatedRoute, private router: Router){}
+  constructor(private patientService: PatientService, public login: AuthService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
     this.getUser();
   }
 
-  getUser(){
-    this.login.currentUser().subscribe((user:any) => {
+  getUser() {
+    this.login.currentUser().subscribe((user: any) => {
       this.login.setUser(user);
       this.user = user;
     })
   }
 
-  updateUser(){
+  updateUser() {
     this.thisUser.id = this.user.id;
     this.thisUser.firstname = this.user.firstname;
     this.thisUser.lastname = this.user.lastname;
@@ -53,18 +53,18 @@ export class ProfilePatientComponent implements OnInit{
     })
   }
 
-  selectImage(event:any){
+  selectImage(event: any) {
     this.selectedImage = event.target.files[0];
-    if(this.selectedImage.type.indexOf('image') < 0){
+    if (this.selectedImage.type.indexOf('image') < 0) {
       Swal.fire("Error", "La imagen debe ser tipo jpg o png", "error");
       this.selectedImage = null;
     }
   }
 
-  uploadImage(){
-    if(!this.selectedImage){
+  uploadImage() {
+    if (!this.selectedImage) {
       Swal.fire("Error", "Debe seleccionar una imagen", "error");
-    }else{
+    } else {
       this.patientService.uploadImage(this.selectedImage, this.user.id).subscribe(user => {
         window.location.reload();
         this.getUser();

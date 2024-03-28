@@ -13,57 +13,57 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
-  generateToken(loginData: any){
+  generateToken(loginData: any) {
     return this.http.post(`${this.baseUrlAuth}/login`, loginData);
   }
 
-  currentUser(){
+  currentUser() {
     return this.http.get(`${this.baseUrlAuth}/user_actual`);
   }
 
-  
-  loginUser(token:any){
+
+  loginUser(token: any) {
     localStorage.setItem('token', token);
   }
 
-  isLoggedIn(){
+  isLoggedIn() {
     let tokenStr = localStorage.getItem('token');
-    if(tokenStr == undefined || tokenStr == '' || tokenStr == null){
+    if (tokenStr == undefined || tokenStr == '' || tokenStr == null) {
       return false;
     }
     return true;
   }
 
-  logout(){
+  logout() {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
     return true;
   }
 
-  getToken(){
+  getToken() {
     return localStorage.getItem('token');
   }
 
-  setUser(user:any){
+  setUser(user: any) {
     localStorage.setItem('user', JSON.stringify(user));
   }
 
-  getUser(){
+  getUser() {
     let userStr = localStorage.getItem('user');
-    if(userStr != null){
+    if (userStr != null) {
       return JSON.parse(userStr);
-    }else{
+    } else {
       this.logout();
       return null;
     }
   }
 
-  getUserRole(){
+  getUserRole() {
     let user = this.getUser();
     return user.authorities[0].authority;
   }
 
-  getCurrentUser(){
+  getCurrentUser() {
     return this.http.get(`${this.baseUrlAuth}/user_actual`);
   }
 }

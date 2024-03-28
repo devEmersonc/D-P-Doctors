@@ -12,7 +12,8 @@
                         <div class="form-group row mt-4 mx-auto">
                             <label for="nombre" class="col-form-label col-md-12 col-lg-12 text-center">Nombre</label>
                             <div class="col-lg-12">
-                                <input type="text" id="nombre" name="nombre" class="form-control" [(ngModel)]="patient.firstname">
+                                <input type="text" id="nombre" name="nombre" class="form-control"
+                                    [(ngModel)]="patient.firstname">
                             </div>
                             <div *ngFor="let err of errors">
                                 <div class="col-lg-12" *ngIf="errors?.length">
@@ -22,11 +23,13 @@
                                 </div>
                             </div>
                         </div>
-            
+
                         <div class="form-group row mt-4 mx-auto">
-                            <label for="apellido" class="col-form-label col-md-12 col-lg-12 text-center">Apellido</label>
+                            <label for="apellido"
+                                class="col-form-label col-md-12 col-lg-12 text-center">Apellido</label>
                             <div class="col-lg-12">
-                                <input type="text" id="apellido" name="apellido" class="form-control" [(ngModel)]="patient.lastname">
+                                <input type="text" id="apellido" name="apellido" class="form-control"
+                                    [(ngModel)]="patient.lastname">
                             </div>
                             <div *ngFor="let err of errors">
                                 <div class="col-lg-12" *ngIf="errors?.length">
@@ -36,11 +39,12 @@
                                 </div>
                             </div>
                         </div>
-                    
+
                         <div class="form-group row mt-4 mx-auto">
                             <label for="email" class="col-form-label col-md-12 col-lg-12 text-center">Email</label>
                             <div class="col-lg-12">
-                                <input type="text" id="email" name="email" class="form-control" [(ngModel)]="patient.email">
+                                <input type="text" id="email" name="email" class="form-control"
+                                    [(ngModel)]="patient.email">
                             </div>
                             <div *ngFor="let err of errors">
                                 <div class="col-lg-12" *ngIf="errors?.length">
@@ -50,11 +54,13 @@
                                 </div>
                             </div>
                         </div>
-                    
+
                         <div class="form-group row mt-4 mx-auto">
-                            <label for="contrasena" class="col-form-label col-md-12 col-lg-12 text-center">Contraseña</label>
+                            <label for="contrasena"
+                                class="col-form-label col-md-12 col-lg-12 text-center">Contraseña</label>
                             <div class="col-lg-12">
-                                <input type="password" id="contrasena" name="contrasena" class="form-control" [(ngModel)]="patient.password">
+                                <input type="password" id="contrasena" name="contrasena" class="form-control"
+                                    [(ngModel)]="patient.password">
                             </div>
                             <div *ngFor="let err of errors">
                                 <div class="col-lg-12" *ngIf="errors?.length">
@@ -64,10 +70,11 @@
                                 </div>
                             </div>
                         </div>
-            
+
                         <div class="form-group row mt-4 justify-content-center">
                             <div class="c">
-                                <button class="btn btn-primary mx-auto d-block" (click)="registerPatient()">Registrar</button>
+                                <button class="btn btn-primary mx-auto d-block"
+                                    (click)="registerPatient()">Registrar</button>
                             </div>
                         </div>
                     </form>

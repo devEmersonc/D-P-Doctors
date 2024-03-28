@@ -3,19 +3,27 @@
         <div class="col-md-8 col-lg-8 bg">
             <div class="row justify-content-center">
                 <div class="col-md-8 col-lg-5 text-center m-4">
-                    <img *ngIf="doctor?.photo" class="" src="http://localhost:8080/api/doctors/view/img/{{doctor.photo}}" alt="profile_picture" width="200px" height="200px" style="border-radius: 20px;">
-                    <img *ngIf="!doctor?.photo && doctor.sex == 'Masculino'" class="" src="../../../../assets/profile_male.png" alt="profile_picture" width="200px" height="200px" style="border-radius: 20px;">
-                    <img *ngIf="!doctor?.photo && doctor.sex == 'Femenino'" class="" src="../../../../assets/profile_female.png" alt="profile_picture" width="200px" height="200px" style="border-radius: 20px;">
+                    <img *ngIf="doctor?.photo" class=""
+                        src="http://localhost:8080/api/doctors/view/img/{{doctor.photo}}" alt="profile_picture"
+                        width="200px" height="200px" style="border-radius: 20px;">
+                    <img *ngIf="!doctor?.photo && doctor.sex == 'Masculino'" class=""
+                        src="../../../../assets/profile_male.png" alt="profile_picture" width="200px" height="200px"
+                        style="border-radius: 20px;">
+                    <img *ngIf="!doctor?.photo && doctor.sex == 'Femenino'" class=""
+                        src="../../../../assets/profile_female.png" alt="profile_picture" width="200px" height="200px"
+                        style="border-radius: 20px;">
                 </div>
-                <div class="col-md-6 col-lg-4 mt-4 mb-5 text-center">                   
+                <div class="col-md-6 col-lg-4 mt-4 mb-5 text-center">
                     <div class="col">
-                        <h1 class="text-dark">{{doctor.firstname}} {{doctor.lastname}}</h1>                            </div>
-                    <div class="col">
-                        <i class="fa-sharp fa-solid fa-envelope  mt-2"></i><span class="text-dark ms-2">{{doctor.email}}</span>  
+                        <h1 class="text-dark">{{doctor.firstname}} {{doctor.lastname}}</h1>
                     </div>
                     <div class="col">
-                        <i class="fa-solid fa-phone mt-3"></i><span class="text-dark ms-2">{{doctor.phone}}</span> 
-                    </div>                      
+                        <i class="fa-sharp fa-solid fa-envelope  mt-2"></i><span
+                            class="text-dark ms-2">{{doctor.email}}</span>
+                    </div>
+                    <div class="col">
+                        <i class="fa-solid fa-phone mt-3"></i><span class="text-dark ms-2">{{doctor.phone}}</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -26,20 +34,22 @@
         </div>
     </div>
 
-    <div class="row d-flex m-4 justify-content-center align-items-center mb-5" style="height: 300px;" *ngIf="!login.isLoggedIn()">
+    <div class="row d-flex m-4 justify-content-center align-items-center mb-5" style="height: 300px;"
+        *ngIf="!login.isLoggedIn()">
         <div class="col-lg-6 text-center">
             <div class="card login" style="min-height: 250px;">
                 <div class="card-body">
-                  <h2 class="card-title mt-5">Debes iniciar sesión para contactar al especialista</h2>
-                  <div class="col-12 mb-2">
-                    <a [routerLink]="['/login']" class="btn btn-primary mt-2 mb-2">Iniciar sesión</a>
-                  </div>
-                  <a [routerLink]="['/form-register']" style="text-decoration: none;">¿No tienes cuenta? registrate aquí</a>
-                </div>                
+                    <h2 class="card-title mt-5">Debes iniciar sesión para contactar al especialista</h2>
+                    <div class="col-12 mb-2">
+                        <a [routerLink]="['/login']" class="btn btn-primary mt-2 mb-2">Iniciar sesión</a>
+                    </div>
+                    <a [routerLink]="['/form-register']" style="text-decoration: none;">¿No tienes cuenta? registrate
+                        aquí</a>
+                </div>
             </div>
         </div>
     </div>
-    
+
     <div class="row justify-content-center">
         <div class="col-lg-6">
             <form class="bg" *ngIf="login.isLoggedIn()">
@@ -49,7 +59,8 @@
                 <div class="form-group mx-auto row mt-4">
                     <label class="col-form-label col-md-12 col-lg-12 text-center" for="firstname">Nombre:</label>
                     <div class="col-lg-12">
-                        <input type="text" class="form-control" id="firstname" name="firstname" placeholder="Ingresa tu nombre" [(ngModel)]="message.firstname">
+                        <input type="text" class="form-control" id="firstname" name="firstname"
+                            placeholder="Ingresa tu nombre" [(ngModel)]="message.firstname">
                     </div>
                     <div *ngFor="let err of errors">
                         <div class="col-lg-12" *ngIf="errors?.length">
@@ -59,53 +70,57 @@
                         </div>
                     </div>
                 </div>
-        
+
                 <div class="form-group mx-auto row mt-4">
                     <label class="col-form-label col-md-12 col-lg-12 text-center" for="lastname">Apellido</label>
                     <div class="col-lg-12">
-                        <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Ingresa tu apellido" [(ngModel)]="message.lastname">
-                    </div>   
+                        <input type="text" class="form-control" id="lastname" name="lastname"
+                            placeholder="Ingresa tu apellido" [(ngModel)]="message.lastname">
+                    </div>
                     <div *ngFor="let err of errors">
                         <div class="col-lg-12" *ngIf="errors?.length">
                             <div *ngIf="err.includes('apellido')">
                                 <p class="text-danger text-center">{{err}}</p>
                             </div>
                         </div>
-                    </div>               
+                    </div>
                 </div>
-        
+
                 <div class="form-group mx-auto row mt-4">
                     <label class="col-form-label col-md-12 col-lg-12 text-center" for="email">Email</label>
                     <div class="col-lg-12">
-                        <input type="text" class="form-control" id="email" name="email" placeholder="Ingresa tu correo electrónico" [(ngModel)]="message.email">
-                    </div>  
+                        <input type="text" class="form-control" id="email" name="email"
+                            placeholder="Ingresa tu correo electrónico" [(ngModel)]="message.email">
+                    </div>
                     <div *ngFor="let err of errors">
                         <div class="col-lg-12" *ngIf="errors?.length">
                             <div *ngIf="err.includes('email')">
                                 <p class="text-danger text-center">{{err}}</p>
                             </div>
                         </div>
-                    </div>          
+                    </div>
                 </div>
-        
+
                 <div class="form-group mx-auto row mt-4">
                     <label class="col-form-label col-md-12 col-lg-12 text-center" for="reason">Motivo</label>
                     <div class="col-lg-12">
-                        <input type="text" class="form-control" id="reason" name="reason" placeholder="Ingresa el motivo de tu mensaje" [(ngModel)]="message.reason">
-                    </div> 
+                        <input type="text" class="form-control" id="reason" name="reason"
+                            placeholder="Ingresa el motivo de tu mensaje" [(ngModel)]="message.reason">
+                    </div>
                     <div *ngFor="let err of errors">
                         <div class="col-lg-12" *ngIf="errors?.length">
                             <div *ngIf="err.includes('motivo')">
                                 <p class="text-danger text-center">{{err}}</p>
                             </div>
                         </div>
-                    </div>               
+                    </div>
                 </div>
-        
+
                 <div class="form-group mx-auto row mt-4 justify-content-center">
                     <label class="col-form-label col-md-12 col-lg-12 text-center" for="message">Mensaje</label>
                     <div class="col-lg-12 text-center">
-                        <textarea class="form-control" name="message" id="message" cols="60" rows="10" placeholder="Escribe aquí tu mensaje..." [(ngModel)]="message.message"></textarea>
+                        <textarea class="form-control" name="message" id="message" cols="60" rows="10"
+                            placeholder="Escribe aquí tu mensaje..." [(ngModel)]="message.message"></textarea>
                     </div>
                     <div *ngFor="let err of errors">
                         <div class="col-lg-12" *ngIf="errors?.length">
@@ -116,7 +131,7 @@
                     </div>
                 </div>
                 <div class="row justify-content-center mt-4 mb-5">
-                    <button  class="btn btn-primary col-2 mb-3" (click)="saveFormMessage()">Enviar</button>
+                    <button class="btn btn-primary col-2 mb-3" (click)="saveFormMessage()">Enviar</button>
                 </div>
             </form>
         </div>
