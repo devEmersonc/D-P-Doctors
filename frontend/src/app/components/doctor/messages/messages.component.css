@@ -14,3 +14,13 @@
     border-radius: 80px;
     background-color: #aec4c921;
 }
+th{
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+}
+td{
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+}

@@ -9,3 +9,9 @@ a{
 a:hover{
     background-color: white;
 }
+
+li {
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+}

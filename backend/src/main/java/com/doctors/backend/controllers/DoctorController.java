@@ -231,6 +231,38 @@ public class DoctorController {
         return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
     }
 
+    @DeleteMapping("/doctor/{id}")
+    public ResponseEntity<?> deleteDoctor(@PathVariable Long id){
+        Map<String, Object> response = new HashMap<>();
+
+        try{
+            User patient = doctorService.getDoctor(id);
+
+            if(patient != null){
+                String previousNamePhoto = patient.getPhoto();
+                if(previousNamePhoto != null && previousNamePhoto.length() > 0){
+                    Path previousPhotoRoute = Paths.get("uploads").resolve(previousNamePhoto).toAbsolutePath();
+                    File previousPhotoFile = previousPhotoRoute.toFile();
+
+                    if(previousPhotoFile.exists() && previousPhotoFile.canRead()){
+                        previousPhotoFile.delete();
+                    }
+                }
+
+                doctorService.deleteDoctor(id);
+                response.put("message", "Se ha eliminado al doctor con éxito.");
+                return new ResponseEntity<Map<String, Object>>(response, HttpStatus.OK);
+            }
+
+            response.put("message", "El doctor no existe.");
+            return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
+        }catch(Exception e){
+            response.put("message", "Error al eliminar al doctor");
+            response.put("error", e.getMessage());
+            return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
     @GetMapping("/message/{message_id}")
     public Message findMessageById(@PathVariable Long message_id){
         return doctorService.findMessageById(message_id);

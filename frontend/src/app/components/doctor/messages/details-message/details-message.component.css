@@ -1,7 +1,19 @@
-.bg-table{
+.bg-table {
     background-color: #edf2f5cb;
 }
 
-.brd{
+.brd {
     border: 2px solid #edf2f5cb;
+}
+
+h1 {
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+}
+
+h3 {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-style: normal;
 }

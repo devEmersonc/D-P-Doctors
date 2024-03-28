@@ -1,6 +1,19 @@
-img{
-    border-radius: 15px 60px 
+img {
+    border-radius: 15px 60px
 }
-p{
+
+p {
     line-height: 30px;
+}
+
+h1 {
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+}
+
+p {
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    font-style: normal;
 }
