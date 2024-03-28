@@ -1,11 +1,9 @@
 package com.doctors.backend.services.impl;
 
 import com.doctors.backend.entity.Message;
-import com.doctors.backend.entity.Specialty;
 import com.doctors.backend.entity.User;
 import com.doctors.backend.repositories.MessageRepository;
 import com.doctors.backend.repositories.RoleRepository;
-import com.doctors.backend.repositories.SpecialtyRepository;
 import com.doctors.backend.repositories.UserRepository;
 import com.doctors.backend.services.DoctorService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,9 +25,6 @@ public class DoctorServiceImpl implements DoctorService {
 
     @Autowired
     private MessageRepository messageRepository;
-
-    @Autowired
-    private SpecialtyRepository specialtyRepository;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -84,13 +79,6 @@ public class DoctorServiceImpl implements DoctorService {
     @Override
     public Boolean existsByEmail(String email) {
         return doctorRepo.existsByEmail(email);
-    }
-
-
-                                //specialties
-    @Override
-    public List<Specialty> findAllSpecialties(){
-        return specialtyRepository.findAll();
     }
 
                                 //Messages (Form)

@@ -1,18 +1,12 @@
 package com.doctors.backend.controllers;
 
 import com.doctors.backend.entity.Message;
-import com.doctors.backend.entity.Specialty;
 import com.doctors.backend.entity.User;
 import com.doctors.backend.services.DoctorService;
-import com.doctors.backend.services.PatientService;
 import jakarta.validation.Valid;
-import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -142,14 +136,6 @@ public class DoctorController {
         response.put("doctor", updatedDoctor);
         return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
     }
-
-
-            //specialties
-
-    /*@GetMapping("/doctors/specialties")
-    public List<Specialty> findAllSpecialties() {
-        return doctorService.findAllSpecialties();
-    }*/
 
     @PostMapping("/upload/image")
     public ResponseEntity<?> uploadImage(@RequestParam("image") MultipartFile image, @RequestParam("id") Long id) {

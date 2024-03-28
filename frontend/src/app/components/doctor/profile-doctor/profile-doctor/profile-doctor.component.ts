@@ -44,6 +44,8 @@ export class ProfileDoctorComponent implements OnInit{
 
     this.doctorService.updateUser(this.thisuser).subscribe({
       next: (json) => {    
+        window.location.reload();
+
         Swal.fire({
           position: "center",
           icon: "success",

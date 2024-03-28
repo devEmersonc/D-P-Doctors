@@ -55,11 +55,6 @@ public class User implements UserDetails {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date updatedAt;
 
-    /*@ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "specialty_id")
-    @JsonIgnoreProperties("users")
-    private Specialty specialty;**/
-
     @JsonIgnoreProperties("users")
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
@@ -195,14 +190,6 @@ public class User implements UserDetails {
     public void setPassword(String password) {
         this.password = password;
     }
-
-    /*public Specialty getSpecialty() {
-        return specialty;
-    }
-
-    public void setSpecialty(Specialty specialty) {
-        this.specialty = specialty;
-    }**/
 
     public String getSpecialty() {
         return specialty;
